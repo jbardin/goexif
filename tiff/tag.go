@@ -131,6 +131,10 @@ func DecodeTag(r ReadAtReader, order binary.ByteOrder) (*Tag, error) {
 	}
 
 	valLen := typeSize[t.Type] * t.Count
+	if valLen > 2000000 {
+		return t, errors.New("tiff: tag too large")
+	}
+
 	if valLen > 4 {
 		binary.Read(r, order, &t.ValOffset)
 		t.Val = make([]byte, valLen)

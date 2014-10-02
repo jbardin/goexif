@@ -1,3 +1,6 @@
+Forked from rwcarlsen/goexif to limit tag size to 2M to prevent OOM conditions
+
+
 goexif
 ======
 
